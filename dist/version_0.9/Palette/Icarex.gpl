@@ -1,0 +1,37 @@
+GIMP Palette
+Name: Icarex
+Columns: 3
+# created by "Birger Garbe (Ulzburger)"
+  0   0   0  Black
+ 26  26  26  90% Gray
+ 51  51  51  80% Gray
+ 77  77  77  70% Gray
+102 102 102  60% Gray
+128 128 128  50% Gray
+153 153 153  40% Gray
+179 179 179  30% Gray
+204 204 204  20% Gray
+230 230 230  10% Gray
+255 255 255  Icarex_031_White
+204 204 204  Icarex_032_LightGrey
+102 102 102  Icarex_033_DarkGrey
+ 33  33  33  Icarex_034_Black
+255 255   0  Icarex_036_Yellow
+255 204   0  Icarex_038_Gold
+255 102   0  Icarex_039_Orange
+255   0   0  Icarex_040_Rot
+255   0 102  Icarex_041_Rubin_unavailable
+  0 204 255  Icarex_045_SkyBlue
+ 51 153 255  Icarex_046_RoyalBlue
+  0   0 204  Icarex_047_MidnightBlue
+  0 153 204  Icarex_048_Caribbean_unavailable
+  0 153 153  Icarex_049_Teal
+204   0 204  Icarex_052_Purple
+204 102 255  Icarex_053_Grape_unavailable
+102   0 102  ICarex_054_Magenta_unavailable
+ 51 204 102  Icarex_055_Cedar
+ 51 153 102  Icarex_056_Forrest
+204 255   0  Icarex_057_FluorYellow
+102 255 102  Icarex_058_FluorGreen
+255 153 255  Icarex_058_FluorPink
+255 102 102  Icarex_058_FlurOrange
