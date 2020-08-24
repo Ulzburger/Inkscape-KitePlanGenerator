@@ -4,5 +4,4 @@
 
 # Color templates and overview
 
-IcarexOverview.svg
-
+[Preview](IcarexOverview.png "IcarexOverview.svg")
