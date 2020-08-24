@@ -1,5 +1,5 @@
 # Inkscape-KitePlanGenerator
-An Inkscape extension to generate stuntkite plans.
+An Inkscape extension to generate stuntkite plans and 3D previews.
 
 For Inkscape version 0.9 and lower use this [download](dist/version_0.9.zip).
 
