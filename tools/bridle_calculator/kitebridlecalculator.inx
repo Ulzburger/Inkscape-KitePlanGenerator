@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <!-- _name must have same name as .py file but capitalise it. Shows on Menu this way-->
+    <_name>kite bridle calculator</_name>
+    <!-- id should be unique. Associates entered values with this menu -->
+    <id>ulzburgerkites.kitebridlecalculator</id>
+    <!-- mention a dependency here and will check for existence (optional)-->
+    <dependency type="executable" location="extensions">kitebridlecalculator.py</dependency>
+    <dependency type="executable" location="extensions">inkex.py</dependency>
+
+    <!-- start notebook -->
+    <param name='active-tab' type="notebook">
+        <!-- one per page(tab) - unique names. Can discover which page in program-->
+        <page name="geometry" _gui-text="bridle geometry">
+            <param name="kite_name" type="string" _gui-text="kite name">Kite</param> 
+            <param name="dist_au" type="float" min="-999" max="999" _gui-text="A to U [mm]">21,5</param>
+            <param name="dist_ai" type="float" min="-999" max="999" _gui-text="A to I [mm]">36,0</param>
+            <param name="dist_io" type="float" min="-999" max="999" _gui-text="I to O [mm]">65,0</param>
+            <param name="dist_uo" type="float" min="-999" max="999" _gui-text="U to O [mm]">55,0</param>
+        </page>
+        <page name="bridle" _gui-text="bridle legs">
+            <param name="inhaul_1" type="float" min="-999" max="999" _gui-text="(red) inhaul [mm]">49</param>
+            <param name="upper_outhaul_1" type="float" min="-999" max="999" _gui-text="(red) upper outhaul [mm]">42</param>
+            <param name="lower_outhaul_1" type="float" min="-999" max="999" _gui-text="(red) lower outhaul [mm]">38</param>
+            <param name="inhaul_2" type="float" min="-999" max="999" _gui-text="(blue) inhaul [mm]">46</param>
+            <param name="upper_outhaul_2" type="float" min="-999" max="999" _gui-text="(blue) upper outhaul [mm]">40</param>
+            <param name="lower_outhaul_2" type="float" min="-999" max="999" _gui-text="(blue) lower outhaul [mm]">40</param>
+        </page>        
+        <page name="Help" _gui-text="help">
+            <_param name="help" type="description" xml:space="preserve">Calculation of the bridle geometry of a stuntkite - V1.0</_param>
+        </page>
+    </param>
+    <!-- classify which menu it appears under - can be new name -->
+    <effect>
+    <object-type>all</object-type>
+        <effects-menu>
+            <submenu _name="Ulzburger Kites"/> <!-- which menu under Extensions -->
+        </effects-menu>
+    </effect>
+    <!-- py file again -->
+    <script>
+        <command reldir="extensions" interpreter="python">kitebridlecalculator.py</command>
+    </script>
+</inkscape-extension>
