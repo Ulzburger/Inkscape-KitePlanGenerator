@@ -50,7 +50,7 @@ class KiteBridle(inkex.Effect):
         color_bridle_2 = '#FF0000' # red
         color_circle = '#999999' # ligth grey
         line_width = 0.25
-        construction = False
+        construction = False # or True
         self.point_0 = kitebridle.Point2D(50 * self.doc_1mm, 50 * self.doc_1mm)
 
         # basic geometry
@@ -76,6 +76,14 @@ class KiteBridle(inkex.Effect):
             self.draw_bullet(layer, color_line, line_width, self.point_0 + bridle.point_io_1, 'Point-IO1')
             self.draw_bullet(layer, color_line, line_width, self.point_0 + bridle.point_uo_2, 'Point-UO2')
 
+            self.draw_circle(layer, color_circle, line_width, self.point_0 + bridle.point_i, bridle.length_i_new, 'Circle-I' )
+            self.draw_circle(layer, color_circle, line_width, self.point_0 + bridle.point_u, bridle.length_u_new, 'Circle-U' )
+            self.draw_circle(layer, color_circle, line_width, self.point_0 + bridle.point_o, bridle.length_o_new, 'Circle-O' )
+            self.draw_line(layer, color_line, line_width, self.point_0 + bridle.point_io_1_new, self.point_0 + bridle.point_io_2_new, 'Line-IU')
+            self.draw_line(layer, color_line, line_width, self.point_0 + bridle.point_uo_1_new, self.point_0 + bridle.point_uo_2_new, 'Line-IU')              
+            self.draw_bullet(layer, color_line, line_width, self.point_0 + bridle.point_io_1_new, 'Point-IO1')
+            self.draw_bullet(layer, color_line, line_width, self.point_0 + bridle.point_uo_2_new, 'Point-UO2')
+            
         # normal
         self.draw_line(layer, color_bridle_1, line_width, self.point_0 + bridle.point_i, self.point_0 + bridle.center, 'Line-IC')
         self.draw_line(layer, color_bridle_1, line_width, self.point_0 + bridle.point_u, self.point_0 + bridle.center, 'Line-UC')
