@@ -6,10 +6,9 @@
     <id>ulzburgerkites.kiteplangenerator</id>
     <!-- mention a dependency here and will check for existence (optional)-->
     <dependency type="executable" location="extensions">kiteplangenerator.py</dependency>
-    <dependency type="executable" location="extensions">inkex.py</dependency>
 
     <!-- start notebook -->
-    <param name='active-tab' type="notebook">
+    <param name="tab" type="notebook">
         <!-- one per page(tab) - unique names. Can discover which page in program-->
         <page name="model" _gui-text="kite model">
             <param name="kite_name" type="string" _gui-text="kite name">Kite</param>        
