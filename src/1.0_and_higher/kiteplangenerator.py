@@ -18,38 +18,37 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 '''
 
 import inkex
-import simplestyle
-from simplepath import formatPath
 import sys
 import datetime
 import stuntkite
 
-class KitePlan(inkex.Effect):
-    def __init__(self):
-        inkex.Effect.__init__(self)
-        self.arg_parser.add_argument("--kite_name", action="store", dest="kite_name", default="Kite", help="command line help")
-        self.arg_parser.add_argument("--end_of_spine", action="store", type=int, dest="end_of_spine", default=0, help="command line help")
-        self.arg_parser.add_argument("--nose_cut_width", action="store", type=int, dest="nose_cut_width", default=0, help="command line help")
-        self.arg_parser.add_argument("--tail_cut_width", action="store", type=int, dest="tail_cut_width", default=0, help="command line help")
-        self.arg_parser.add_argument("--upper_center", action="store", type=int, dest="upper_center", default=0, help="command line help")
-        self.arg_parser.add_argument("--lower_center", action="store", type=int, dest="lower_center", default=0, help="command line help")
-        self.arg_parser.add_argument("--end_of_leading_edge", action="store", type=int, dest="end_of_leading_edge", default=0, help="command line help")
-        self.arg_parser.add_argument("--end_of_leading_edge_height", action="store", type=int, dest="end_of_leading_edge_height", default=0, help="command line help")
-        self.arg_parser.add_argument("--wingspan", action="store", type=int, dest="wingspan", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_pos_1", action="store", type=int, dest="standoff_pos_1", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_len_1", action="store", type=int, dest="standoff_len_1", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_offset_1", action="store", type=float, dest="standoff_offset_1", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_pos_2", action="store", type=int, dest="standoff_pos_2", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_len_2", action="store", type=int, dest="standoff_len_2", default=0, help="command line help")
-        self.arg_parser.add_argument("--standoff_offset_2", action="store", type=float, dest="standoff_offset_2", default=0, help="command line help")
-        self.arg_parser.add_argument("--le_ctrlpt1_x", action="store", type=int, dest="le_ctrlpt1_x", default=0, help="command line help")
-        self.arg_parser.add_argument("--le_ctrlpt1_y", action="store", type=float, dest="le_ctrlpt1_y", default=0, help="command line help")
-        self.arg_parser.add_argument("--le_ctrlpt2_x", action="store", type=int, dest="le_ctrlpt2_x", default=0, help="command line help")
-        self.arg_parser.add_argument("--le_ctrlpt2_y", action="store", type=float, dest="le_ctrlpt2_y", default=0, help="command line help")
-        self.arg_parser.add_argument("--te_ctrlpt_inner", action="store", type=int, dest="te_ctrlpt_inner", default=0, help="command line help")
-        self.arg_parser.add_argument("--te_ctrlpt_outer", action="store", type=int, dest="te_ctrlpt_outer", default=0, help="command line help")
-        self.arg_parser.add_argument("--active-tab", action="store", dest="active_tab", default='title', help="Active tab.")
-        self.arg_parser.add_argument("--render_type", action="store", dest="render_type", default='overview', help="command line help")
+class KitePlan(inkex.GenerateExtension):
+
+    def add_arguments(self, pars):
+        pars.add_argument("--tab", default="model")        
+        pars.add_argument("--kite_name", action="store", dest="kite_name", default="Kite", help="command line help")
+        pars.add_argument("--end_of_spine", action="store", type=int, dest="end_of_spine", default=0, help="command line help")
+        pars.add_argument("--nose_cut_width", action="store", type=int, dest="nose_cut_width", default=0, help="command line help")
+        pars.add_argument("--tail_cut_width", action="store", type=int, dest="tail_cut_width", default=0, help="command line help")
+        pars.add_argument("--upper_center", action="store", type=int, dest="upper_center", default=0, help="command line help")
+        pars.add_argument("--lower_center", action="store", type=int, dest="lower_center", default=0, help="command line help")
+        pars.add_argument("--end_of_leading_edge", action="store", type=int, dest="end_of_leading_edge", default=0, help="command line help")
+        pars.add_argument("--end_of_leading_edge_height", action="store", type=int, dest="end_of_leading_edge_height", default=0, help="command line help")
+        pars.add_argument("--wingspan", action="store", type=int, dest="wingspan", default=0, help="command line help")
+        pars.add_argument("--standoff_pos_1", action="store", type=int, dest="standoff_pos_1", default=0, help="command line help")
+        pars.add_argument("--standoff_len_1", action="store", type=int, dest="standoff_len_1", default=0, help="command line help")
+        pars.add_argument("--standoff_offset_1", action="store", type=float, dest="standoff_offset_1", default=0, help="command line help")
+        pars.add_argument("--standoff_pos_2", action="store", type=int, dest="standoff_pos_2", default=0, help="command line help")
+        pars.add_argument("--standoff_len_2", action="store", type=int, dest="standoff_len_2", default=0, help="command line help")
+        pars.add_argument("--standoff_offset_2", action="store", type=float, dest="standoff_offset_2", default=0, help="command line help")
+        pars.add_argument("--le_ctrlpt1_x", action="store", type=int, dest="le_ctrlpt1_x", default=0, help="command line help")
+        pars.add_argument("--le_ctrlpt1_y", action="store", type=float, dest="le_ctrlpt1_y", default=0, help="command line help")
+        pars.add_argument("--le_ctrlpt2_x", action="store", type=int, dest="le_ctrlpt2_x", default=0, help="command line help")
+        pars.add_argument("--le_ctrlpt2_y", action="store", type=float, dest="le_ctrlpt2_y", default=0, help="command line help")
+        pars.add_argument("--te_ctrlpt_inner", action="store", type=int, dest="te_ctrlpt_inner", default=0, help="command line help")
+        pars.add_argument("--te_ctrlpt_outer", action="store", type=int, dest="te_ctrlpt_outer", default=0, help="command line help")
+        pars.add_argument("--active-tab", action="store", dest="active_tab", default='title', help="Active tab.")
+        pars.add_argument("--render_type", action="store", dest="render_type", default='overview', help="command line help")
 
     def add_description (self, layer, kite):
         svg = self.document.getroot()
@@ -727,7 +726,8 @@ class KitePlan(inkex.Effect):
     def draw_path_filled(self, parent, color, color_fill, width, pstr, name ):
         stroke_width = width * self.svg.unittouu('1mm')
         line_style = { 'stroke' : color, 'stroke-width' :  stroke_width , 'stroke-linecap' : 'round', 'fill' : color_fill }
-        line_attribs = {'style' : simplestyle.formatStyle(line_style), inkex.addNS('label','inkscape') : name, 'd' : 'M' + pstr }
+        # line_attribs = {'style' : simplestyle.formatStyle(line_style), inkex.addNS('label','inkscape') : name, 'd' : 'M' + pstr }
+        line_attribs = {'style' : str(inkex.Style(line_style)), inkex.addNS('label','inkscape') : name, 'd' : 'M' + pstr }        
         from lxml import etree
         line = etree.SubElement(parent, inkex.addNS('path','svg'), line_attribs )
 
@@ -785,8 +785,5 @@ class KitePlan(inkex.Effect):
                 layer.set(inkex.addNS('groupmode', 'inkscape'), 'layer')
                 self.add_texture(layer, kite)
 
-
 if __name__ == '__main__':
-    e = KitePlan()
-    e.run()
-
+    KitePlan().run()
